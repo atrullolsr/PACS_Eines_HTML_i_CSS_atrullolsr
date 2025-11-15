@@ -4,8 +4,9 @@
   "description": "Web responsive de viatges amb Parcel",
   "scripts": {
     "start": "parcel src/index.html --open",
+    "build": "npm run build-css && parcel build src/index.html --dist-dir build",
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html --dist-dir build",
+    "build-css": "sass src/styles/main.scss dist/styles/main.css",
     "serve:preview": "parcel serve build"
   },
   "devDependencies": {
