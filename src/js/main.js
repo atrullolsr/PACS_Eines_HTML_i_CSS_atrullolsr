@@ -6,6 +6,7 @@ import "glider-js/glider.min.css";
 
 // Precarreguem imatges
 const imagesToPreload = [
+    new URL("../assets/images/viatge.jpg", import.meta.url),
     new URL("../assets/images/roma/roma-bandera.jpg", import.meta.url),
     new URL("../assets/images/roma/panoramica_roma.jpg", import.meta.url),
     new URL("../assets/images/roma/coloseu.jpg", import.meta.url),
@@ -14,17 +15,19 @@ const imagesToPreload = [
     new URL("../assets/images/paris/paris-bandera.jpg", import.meta.url),
     new URL("../assets/images/paris/panoramica_paris.jpg", import.meta.url),
     new URL("../assets/images/paris/torre_eiffel.jpg", import.meta.url),
+    new URL("../assets/images/paris/arc-de-triomf.jpg", import.meta.url),
     new URL("../assets/images/paris/louvre.jpg", import.meta.url),
     new URL("../assets/images/paris/notre_dame.jpg", import.meta.url),
     new URL("../assets/images/lisboa/lisboa-bandera.jpg", import.meta.url),
     new URL("../assets/images/lisboa/panoramica_lisboa.jpg", import.meta.url),
     new URL("../assets/images/lisboa/belem.jpg", import.meta.url),
     new URL("../assets/images/lisboa/jeronimos.jpg", import.meta.url),
-    new URL("../assets/images/lisboa/castell_sao_jorge.jpg", import.meta.url),
+    new URL("../assets/images/lisboa/tramvia_28.jpg", import.meta.url),
+    new URL("../assets/images/lisboa/elevador_santa_justa.jpg", import.meta.url),
     new URL("../assets/images/londres/londres-bandera.jpg", import.meta.url),
     new URL("../assets/images/londres/panoramica_londres.jpg", import.meta.url),
     new URL("../assets/images/londres/bigben.jpg", import.meta.url),
-    new URL("../assets/images/londres/british-museum.jpg", import.meta.url),
+    new URL("../assets/images/londres/london-eye.jpg", import.meta.url),
     new URL("../assets/images/londres/tower-bridge.jpg", import.meta.url),
 ];
 
