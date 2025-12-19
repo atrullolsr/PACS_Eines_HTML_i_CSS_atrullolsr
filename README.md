@@ -105,9 +105,6 @@ Babel: Transpilació de JavaScript modern per navegadors antics.
 
 Estructura de commits
 S’han fet commits regulars amb missatges descriptius per documentar el procés de desenvolupament:
-
-bash
-Copiar código
 git add .
 git commit -m "Missatge descriptiu"
 Llicència i atribucions

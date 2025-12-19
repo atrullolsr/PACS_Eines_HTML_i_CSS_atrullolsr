@@ -4,58 +4,40 @@ import "../styles/main.scss";
 import Glider from "glider-js";
 import "glider-js/glider.min.css";
 
-// Precarreguem imatges
-const imagesToPreload = [
-    new URL("../assets/images/viatge.jpg", import.meta.url),
-    new URL("../assets/images/roma/roma-bandera.jpg", import.meta.url),
-    new URL("../assets/images/roma/panoramica_roma.jpg", import.meta.url),
-    new URL("../assets/images/roma/coloseu.jpg", import.meta.url),
-    new URL("../assets/images/roma/panteo_roma.jpg", import.meta.url),
-    new URL("../assets/images/roma/fontana_di_trevi.jpg", import.meta.url),
-    new URL("../assets/images/paris/paris-bandera.jpg", import.meta.url),
-    new URL("../assets/images/paris/panoramica_paris.jpg", import.meta.url),
-    new URL("../assets/images/paris/torre_eiffel.jpg", import.meta.url),
-    new URL("../assets/images/paris/arc-de-triomf.jpg", import.meta.url),
-    new URL("../assets/images/paris/louvre.jpg", import.meta.url),
-    new URL("../assets/images/paris/notre_dame.jpg", import.meta.url),
-    new URL("../assets/images/lisboa/lisboa-bandera.jpg", import.meta.url),
-    new URL("../assets/images/lisboa/panoramica_lisboa.jpg", import.meta.url),
-    new URL("../assets/images/lisboa/belem.jpg", import.meta.url),
-    new URL("../assets/images/lisboa/jeronimos.jpg", import.meta.url),
-    new URL("../assets/images/lisboa/tramvia_28.jpg", import.meta.url),
-    new URL("../assets/images/lisboa/elevador_santa_justa.jpg", import.meta.url),
-    new URL("../assets/images/londres/londres-bandera.jpg", import.meta.url),
-    new URL("../assets/images/londres/panoramica_londres.jpg", import.meta.url),
-    new URL("../assets/images/londres/bigben.jpg", import.meta.url),
-    new URL("../assets/images/londres/london-eye.jpg", import.meta.url),
-    new URL("../assets/images/londres/tower-bridge.jpg", import.meta.url),
-];
+// -----------------------------
+// 0. Precarregar imatges automàticament
+// -----------------------------
+import { imagesToPreload } from "./preload-images.js";
 
-imagesToPreload.forEach(url => {
-    const img = new Image();
-    img.src = url;
+imagesToPreload.forEach(async url => {
+    try {
+        const img = new Image();
+        img.src = url;
+        await img.decode();
+    } catch (err) {
+        console.warn(`No s’ha pogut carregar la imatge: ${url}`);
+    }
 });
 
-// Menú responsive + carrusel
+// ==============================
+// 1. Funcions DOMContentLoaded
+// ==============================
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Menú responsive
+    // ---------- Menú responsive ----------
     const menuToggle = document.querySelector('header .menu-toggle');
     const navLinks = document.querySelector('header .nav-links');
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-
-            // Canvia icona ☰ a ✕
-            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-            menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+            const expanded = navLinks.classList.contains('active');
+            menuToggle.textContent = expanded ? '✕' : '☰';
+            menuToggle.setAttribute('aria-expanded', expanded);
         });
-    } else {
-        console.error('No s’ha trobat .menu-toggle o .nav-links');
     }
 
-    // Carrusel Glider.js
+    // ---------- Glider.js Galeria ----------
     const gallery = document.querySelector(".glider");
     if (gallery) {
         const glider = new Glider(gallery, {
@@ -70,26 +52,31 @@ document.addEventListener("DOMContentLoaded", () => {
             ],
         });
 
-        function updateGap() {
-            if (!gallery || !glider) return;
+        // Accessibilitat fletxes
+        const prev = document.querySelector(".glider-prev");
+        const next = document.querySelector(".glider-next");
+        if (prev) prev.setAttribute("aria-label", "Slide anterior");
+        if (next) next.setAttribute("aria-label", "Següent slide");
 
+        // Lazy-loading imatges
+        glider.track.querySelectorAll("img").forEach(img => {
+            img.setAttribute("loading", "lazy");
+        });
+
+        // Ajusta gap
+        function updateGap() {
             const containerWidth = gallery.offsetWidth;
             const slide = glider.track.querySelector('.glider-slide');
             if (slide) {
                 const slideWidth = slide.offsetWidth;
                 const slidesVisible = Math.floor(containerWidth / slideWidth);
-                if (slidesVisible > 1) {
-                    gallery.classList.add("has-gap");
-                } else {
-                    gallery.classList.remove("has-gap");
-                }
+                gallery.classList.toggle("has-gap", slidesVisible > 1);
             }
         }
 
-        // Inicial
         updateGap();
 
-        // Recalcul en resize amb refresh
+        // Resize debounce
         let resizeTimeout;
         window.addEventListener("resize", () => {
             clearTimeout(resizeTimeout);
@@ -98,5 +85,42 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateGap();
             }, 150);
         });
+
+        // Animacions inicials slides
+        glider.track.querySelectorAll(".glider-slide").forEach((slide, index) => {
+            slide.style.opacity = 0;
+            slide.style.transform = "translateY(20px)";
+            slide.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            setTimeout(() => {
+                slide.style.opacity = 1;
+                slide.style.transform = "translateY(0)";
+            }, index * 150);
+        });
     }
-});
+
+    // ==============================
+    // 2. Animació IntersectionObserver
+    // ==============================
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const elementsToObserve = [
+        document.querySelector('.featured-image'),
+        ...document.querySelectorAll('.gallery-img')
+    ];
+    elementsToObserve.forEach(el => {
+        if (el) observer.observe(el);
+    });
+
+    // ==============================
+    // 3. Mostrar les card
+    // ==============================
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => observer.observe(card));
+
+});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

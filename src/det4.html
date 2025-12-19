@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Detall Londres - Viatges pel món</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="alternate icon" href="./assets/images/favicon.png">
     </head>
     <body>
         <a href="#main-content" class="skip-link">Saltar a contingut</a>
@@ -13,8 +15,8 @@
                 <div class="logo">
                     <a href="./index.html">Viatges pel món</a>
                 </div>
-                <button class="menu-toggle" aria-expanded="false" aria-label="Obrir menú">☰</button>
-                <div class="nav-links">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Obrir menú">☰</button>
+                <div id="nav-links" class="nav-links">
                     <a href="./index.html">Inici</a>
                     <a href="./categoria.html" class="active">Categories</a>
                     <a href="./links.html">Enllaços</a>
@@ -27,7 +29,12 @@
             <section id="londres" class="description">
                 <h1>Explora Londres, la capital que mai dorm</h1>
                 <!-- Imatge destacada -->
-                <img src="./assets/images/londres/panoramica_londres.jpg" alt="Vista panoràmica de Lisboa" class="featured-image">
+                <picture>
+                    <source media="(max-width: 600px)" type="image/webp" srcset="./assets/images/generated/londres/panoramica_londres-480.webp">
+                    <source media="(max-width: 1024px)" type="image/webp" srcset="./assets/images/generated/londres/panoramica_londres-800.webp">
+                    <source media="(min-width: 1025px)" type="image/webp" srcset="./assets/images/generated/londres/panoramica_londres-1200.webp">
+                    <img src="./assets/images/originals/londres/panoramica_londres.jpg" alt="Vista panoramica de Londres" class="featured-image">
+                </picture>
 
                 <p>Londres és una ciutat vibrant i multicultural, on la història i la modernitat conviuen de manera fascinant. Des dels
                 palaus reials fins als gratacels de vidre, cada racó explica una història. El punt de partida ideal és el
@@ -61,22 +68,28 @@
                 <h2>Galeria</h2>
                 <div class="glider-contain">
                     <div class="glider">
-                        <figure class="gallery-img">
-                            <img src="./assets/images/londres/bigben.jpg" alt="Big Ben">
+                        <figure class="glider-slide gallery-img">
+                            <picture>
+                                <img src="./assets/images/originals/londres/bigben.jpg" alt="Big Ben">
+                            </picture>
                             <figcaption class="info">
                                 <strong class="caption">Big Ben</strong>
                                 <cite class="credit">Foto: Mary_R_Smith · Pixabay</cite>
                             </figcaption>
                         </figure>
-                        <figure class="gallery-img">
-                            <img src="./assets/images/londres/london-eye.jpg" alt="London Eye">
+                        <figure class="glider-slide gallery-img">
+                            <picture>
+                                <img src="./assets/images/originals/londres/london-eye.jpg" alt="London Eye">
+                            </picture>
                             <figcaption class="info">
                                 <strong class="caption">London Eye</strong>
                                 <cite class="credit">Foto: Aleviva-Medien · Pixabay</cite>
                             </figcaption>
                         </figure>
-                        <figure class="gallery-img">
-                            <img src="./assets/images/londres/tower-bridge.jpg" alt="Pont de la Torre (Tower Bridge)">
+                        <figure class="glider-slide gallery-img">
+                            <picture>
+                                <img src="./assets/images/originals/londres/tower-bridge.jpg" alt="Pont de la Torre (Tower Bridge)">
+                            </picture>
                             <figcaption class="info">
                                 <strong class="caption">Tower Bridge</strong>
                                 <cite class="credit">Foto: spinheike · Pixabay</cite>
@@ -84,8 +97,18 @@
                         </figure>
                     </div>
                     <!-- Controls del carrusel -->
-                    <button class="glider-prev" aria-label="Anterior">«</button>
-                    <button class="glider-next" aria-label="Següent">»</button>
+                    <button class="glider-prev" aria-label="Anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="icon-arrow">
+                            <title>Anterior</title>
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>      
+                    <button class="glider-next" aria-label="Següent">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="icon-arrow">
+                            <title>Següent</title>
+                            <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
                     <div role="tablist" class="dots"></div>
                 </div>
             </section>

@@ -15,6 +15,7 @@ $max-width: 1200px;
 // Mixins
 // ===============================
 @use "sass:color";
+
 @mixin btn-style($bg-color, $text-color) {
   background-color: $bg-color;
   color: $text-color;
@@ -40,8 +41,9 @@ $max-width: 1200px;
 
   img {
     width: 100%;
-    height: auto;
+    height: 200px;
     display: block;
+    object-fit: cover;
   }
 
   .card-content {
@@ -99,6 +101,7 @@ $max-width: 1200px;
 *::before,
 *::after {
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 html {
@@ -261,7 +264,7 @@ footer {
 }
 
 // ===============================
-// Hero
+// Hero amb clip-path animat
 // ===============================
 .hero {
   position: relative;
@@ -274,20 +277,70 @@ footer {
     height: 100%;
     display: block;
     object-fit: cover;
+    clip-path: inset(0);
+    transition: clip-path 0.4s ease, transform 0.4s ease;
+
+    &:hover {
+      clip-path: inset(20px 30px round 20px);
+      transform: scale(1.05);
+    }
   }
 
+  // Capes superposades amb gradient per efecte visual
   &::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-      linear-gradient(to bottom, $color-bg 0%, rgba(255, 255, 255, 0) 20%) top,
-      linear-gradient(to top, $color-bg 0%, rgba(255, 255, 255, 0) 20%) bottom,
-      linear-gradient(to right, $color-bg 0%, rgba(255, 255, 255, 0) 20%) left,
-      linear-gradient(to left, $color-bg 0%, rgba(255, 255, 255, 0) 20%) right;
     background-repeat: no-repeat;
     background-size: 100% 60px, 100% 60px, 60px 100%, 60px 100%;
+  }
+}
+
+.hero-svg {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+
+  circle {
+    stroke: $color-primary;
+    stroke-width: 4;
+    fill: none;
+    transform-origin: 50% 50%;
+    animation: pulse 2s infinite ease-in-out;
+  }
+
+  polygon {
+    fill: $color-secondary;
+    transform-origin: 50% 50%;
+    animation: rotate 4s linear infinite;
+  }
+}
+
+// Animació pulsació del cercle
+@keyframes pulse {
+  0%, 100% {
+    r: 40;
+  }
+
+  50% {
+    r: 35;
+  }
+}
+
+// Rotació contínua del polígon
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -322,25 +375,27 @@ footer {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin: 0 auto;
 
   .card {
     @include card-style($color-bg, $color-border);
-  }
-}
 
-// Responsivitat de cards
-@media(max-width:1024px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    // Animació aparició
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 
-@media(max-width:775px) {
-  .card-grid {
-    grid-template-columns: 1fr;
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
   }
 }
 
@@ -349,6 +404,7 @@ footer {
   height: 350px;
   object-fit: cover;
   border-radius: 12px;
+
 }
 
 .video-container {
@@ -360,10 +416,11 @@ footer {
   iframe {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+    left: 50%;
+    width: 75%;
+    height: 75%;
+    transform: translateX(-50%);
+    border-radius: 12px;
   }
 }
 
@@ -394,6 +451,12 @@ footer {
           height: 500px;
           object-fit: cover;
           display: block;
+          transition: transform 0.4s ease, filter 0.4s ease;
+
+          &:hover {
+            transform: scale(1.03);
+            filter: brightness(1.05);
+          }
         }
 
         .info {
@@ -428,16 +491,48 @@ footer {
       place-content: baseline !important;
       margin-inline: 0;
       margin-block: 0;
+    }   
+
+    .glider-prev,
+    .glider-next {
+      @include glider-button($color-primary, $color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+
+      svg.icon-arrow {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s ease, stroke 0.3s ease;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px) scale(1);
+        }
+
+        100% {
+          transform: translateY(-5px) scale(1.05);
+        }
+      }
+
+      &:hover svg.icon-arrow {
+        transform: scale(1.2);
+        stroke: $color-secondary;
+      }
+
+      &:focus svg.icon-arrow {
+        stroke: $color-focus;
+      }
     }
 
     .glider-prev {
-      @include glider-button($color-primary, $color-bg);
-      left: 15px;
+      left: 10px; // dins la imatge, a l'esquerra
     }
 
     .glider-next {
-      @include glider-button($color-primary, $color-bg);
-      right: 15px;
+      right: 10px; // dins la imatge, a la dreta
     }
 
     .dots {
@@ -486,6 +581,17 @@ footer {
   .intro h1 {
     font-size: 2rem;
   }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .video-container {
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
 // Mòbil
@@ -497,6 +603,10 @@ footer {
 
   .hero-content h1 {
     font-size: 2rem;
+  }
+
+  .hero-svg {
+    bottom: 15px !important;;
   }
 
   main {
@@ -545,5 +655,9 @@ footer {
         max-height: 500px;
       }
     }
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
   }
 }

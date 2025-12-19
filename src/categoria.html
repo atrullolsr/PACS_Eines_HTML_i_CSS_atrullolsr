@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Categoria - Viatges pel món</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="alternate icon" href="./assets/images/favicon.png">
     </head>
     <body>
     <a href="#main-content" class="skip-link">Saltar a contingut</a>
@@ -13,8 +15,8 @@
             <div class="logo">
                 <a href="./index.html">Viatges pel món</a>
             </div>
-            <button class="menu-toggle" aria-expanded="false" aria-label="Obrir menú">☰</button>
-            <div class="nav-links">
+            <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Obrir menú">☰</button>
+            <div id="nav-links" class="nav-links">
                 <a href="./index.html">Inici</a>
                 <a href="./categoria.html" class="active" >Categories</a>
                 <a href="./links.html">Enllaços</a>
@@ -28,7 +30,19 @@
         <div class="card-grid">
             <!-- Targeta Roma -->
             <div class="card">
-                <img src="./assets/images/roma/roma-bandera.jpg" alt="Vista del Colosseu a Roma" class="card-image">
+                <picture>
+                    <source srcset="./assets/images/generated/roma/roma-bandera-480.avif 480w,
+                                    ./assets/images/generated/roma/roma-bandera-800.avif 800w,
+                                    ./assets/images/generated/roma/roma-bandera-1200.avif 1200w"
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/avif">
+                    <source srcset="./assets/images/generated/roma/roma-bandera-480.webp 480w,
+                                    ./assets/images/generated/roma/roma-bandera-800.webp 800w,
+                                    ./assets/images/generated/roma/roma-bandera-1200.webp 1200w"
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/webp">
+                    <img src="./assets/images/originals/roma/roma-bandera.jpg" alt="Vista de Roma amb la bandera italiana" class="card-image">
+                </picture>
                 <div class="card-content">
                     <h2>Endinsa’t a Roma, la Ciutat Eterna</h2>
                     <p>Respira història entre les ruïnes del Fòrum, visita el Vaticà i assaboreix l’autèntic esperit italià en cada
@@ -39,7 +53,19 @@
 
             <!-- Targeta París -->
             <div class="card">
-                <img src="./assets/images/paris/paris-bandera.jpg" alt="Vista panoràmica de París amb la Torre Eiffel" class="card-image">
+                <picture>
+                    <source srcset="./assets/images/generated/paris/paris-bandera-480.avif 480w,
+                                    ./assets/images/generated/paris/paris-bandera-800.avif 800w,
+                                    ./assets/images/generated/paris/paris-bandera-1200.avif 1200w"
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/avif">
+                    <source srcset="./assets/images/generated/paris/paris-bandera-480.webp 480w,
+                                    ./assets/images/generated/paris/paris-bandera-800.webp 800w,
+                                    ./assets/images/generated/paris/paris-bandera-1200.webp 1200w"
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/webp">
+                    <img src="./assets/images/originals/paris/paris-bandera.jpg" alt="Vista de París amb la bandera francesa"  class="card-image">
+                </picture>
                 <div class="card-content">
                     <h2>Viu la màgia de París</h2>
                     <p>Camina pels carrers romàntics de la capital francesa i gaudeix de la Torre Eiffel, el Louvre i la millor
@@ -50,7 +76,19 @@
             
             <!-- Targeta Lisboa -->
             <div class="card">
-                <img src="./assets/images/lisboa/lisboa-bandera.jpg" alt="Vistes del barri d'Alfama a Lisboa" class="card-image">
+                <picture>
+                    <source srcset="./assets/images/generated/lisboa/lisboa-bandera-480.avif 480w,
+                                    ./assets/images/generated/lisboa/lisboa-bandera-800.avif 800w,
+                                    ./assets/images/generated/lisboa/lisboa-bandera-1200.avif 1200w" 
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/avif">
+                    <source srcset="./assets/images/generated/lisboa/lisboa-bandera-480.webp 480w,
+                                    ./assets/images/generated/lisboa/lisboa-bandera-800.webp 800w,
+                                    ./assets/images/generated/lisboa/lisboa-bandera-1200.webp 1200w"
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/webp">
+                    <img src="./assets/images/originals/lisboa/lisboa-bandera.jpg" alt="Vista de Lisboa amb la bandera portuguesa" class="card-image">
+                </picture>
                 <div class="card-content">
                     <h2>Sent l’encant de Lisboa</h2>
                     <p>Deixa’t portar pels tramvies grocs, els sons del fado i les vistes del riu Tajo en una ciutat plena de llum i
@@ -61,7 +99,19 @@
             
             <!-- Targeta Londres -->
             <div class="card">
-                <img src="./assets/images/londres/londres-bandera.jpg" alt="Vista del Big Ben i el Tàmesi a Londres" class="card-image">
+                <picture>
+                    <source srcset="./assets/images/generated/londres/londres-bandera-480.avif 480w,
+                                    ./assets/images/generated/londres/londres-bandera-800.avif 800w,
+                                    ./assets/images/generated/londres/londres-bandera-1200.avif 1200w"
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/avif">
+                    <source srcset="./assets/images/generated/londres/londres-bandera-480.webp 480w,
+                                    ./assets/images/generated/londres/londres-bandera-800.webp 800w,
+                                    ./assets/images/generated/londres/londres-bandera-1200.webp 1200w"
+                                    sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    type="image/webp">
+                    <img src="./assets/images/originals/londres/londres-bandera.jpg" alt="Vista de Londres amb la bandera britànica" class="card-image">
+                </picture>                
                 <div class="card-content">
                     <h2>Explora Londres, la capital que mai dorm</h2>
                     <p>Descobreix el Big Ben, el Palau de Buckingham i l’ambient únic dels mercats, parcs i carrers londinencs.</p>
