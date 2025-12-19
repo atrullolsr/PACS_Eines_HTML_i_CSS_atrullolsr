@@ -1,75 +1,73 @@
 <!DOCTYPE html>
 <html lang="ca">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viatges pel món</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="alternate icon" href="./assets/images/favicon.png">
+  </head>
+  <body>
+    <!-- Skip link WCAG -->
+    <a href="#main-content" class="skip-link">Saltar a contingut</a>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viatges pel món</title>
-  <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
-  <link rel="alternate icon" href="./assets/images/favicon.png">
-</head>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="./index.html">Viatges pel món</a>
+        </div>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Obrir menú">☰</button>
+        <div id="nav-links" class="nav-links">
+          <a href="./index.html" class="active">Inici</a>
+          <a href="./categoria.html">Categories</a>
+          <a href="./links.html">Enllaços</a>
+        </div>
+      </nav>
+    </header>
 
-<body>
-  <!-- Skip link WCAG -->
-  <a href="#main-content" class="skip-link">Saltar a contingut</a>
+    <main id="main-content">
+      <!-- Hero amb imatge responsive + clip-path -->
+      <section class="hero" aria-labelledby="hero-title">
+        <picture class="hero-media">
+          <source type="image/webp" srcset="./assets/images/generated/viatge-480.webp 480w, 
+          ./assets/images/generated/viatge-800.webp 800w,
+          ./assets/images/generated/viatge-1200.webp 1200w" sizes="(max-width: 600px) 100vw, 1200px">
+          <img src="./assets/images/originals/viatge.jpg" alt="Paisatge de viatge amb una ciutat europea i natura"
+            class="hero-image" loading="lazy">
+        </picture>
 
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="./index.html">Viatges pel món</a>
-      </div>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Obrir menú">☰</button>
-      <div id="nav-links" class="nav-links">
-        <a href="./index.html" class="active">Inici</a>
-        <a href="./categoria.html">Categories</a>
-        <a href="./links.html">Enllaços</a>
-      </div>
-    </nav>
-  </header>
+        <div class="hero-content">
+          <h1 id="hero-title">Viatges pel món</h1>
+          <p>Descobreix destinacions úniques i planifica la teva pròxima aventura</p>
+          <a href="./categoria.html" class="btn hero-btn">Explora destinacions</a>
+        </div>
 
-  <main id="main-content">
-    <!-- Hero amb imatge responsive + clip-path -->
-    <section class="hero" aria-labelledby="hero-title">
-      <picture class="hero-media">
-        <source type="image/webp" srcset="./assets/images/generated/viatge-480.webp 480w, 
-                    ./assets/images/generated/viatge-800.webp 800w,
-                    ./assets/images/generated/viatge-1200.webp 1200w" sizes="(max-width: 600px) 100vw, 1200px">
-        <img src="./assets/images/originals/viatge.jpg" alt="Paisatge de viatge amb una ciutat europea i natura"
-          class="hero-image" loading="lazy">
-      </picture>
+        <svg class="hero-svg" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <circle cx="50" cy="50" r="40" />
+          <polygon points="50,15 60,50 50,45 40,50" />
+        </svg>
+      </section>
 
-      <div class="hero-content">
-        <h1 id="hero-title">Viatges pel món</h1>
-        <p>Descobreix destinacions úniques i planifica la teva pròxima aventura</p>
-        <a href="./categoria.html" class="btn hero-btn">Explora destinacions</a>
-      </div>
+      <!-- Secció introductòria amb imatge example -->
+      <section class="intro">
+        <h1>Explora, somia i viu noves experiències</h1>
+        <p>
+          A <strong>Viatges pel món</strong> et volem acompanyar en cada pas de la teva aventura.
+          Descobreix guies de destinacions, recomanacions pràctiques, galeries d’imatges impressionants i
+          recursos útils perquè puguis planificar el teu viatge amb confiança.
+          Tant si ets un viatger novell com un explorador habitual, aquí trobaràs el punt de partida ideal
+          per fer realitat la teva propera escapada.
+        </p>
 
-      <svg class="hero-svg" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-        <circle cx="50" cy="50" r="40" />
-        <polygon points="50,15 60,50 50,45 40,50" />
-      </svg>
-    </section>
+        <a href="./categoria.html" class="btn">Comença el viatge</a>
+      </section>
+    </main>
 
-    <!-- Secció introductòria amb imatge example -->
-    <section class="intro">
-      <h1>Explora, somia i viu noves experiències</h1>
-      <p>
-        A <strong>Viatges pel món</strong> et volem acompanyar en cada pas de la teva aventura.
-        Descobreix guies de destinacions, recomanacions pràctiques, galeries d’imatges impressionants i
-        recursos útils perquè puguis planificar el teu viatge amb confiança.
-        Tant si ets un viatger novell com un explorador habitual, aquí trobaràs el punt de partida ideal
-        per fer realitat la teva propera escapada.
-      </p>
+    <footer>
+      <p>&copy; 2025 Viatges pel món.</p>
+    </footer>
 
-      <a href="./categoria.html" class="btn">Comença el viatge</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Viatges pel món.</p>
-  </footer>
-
-  <script type="module" src="./js/main.js"></script>
-</body>
+    <script type="module" src="./js/main.js"></script>
+  </body>
 
 </html>
