@@ -1,126 +1,143 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-import "../styles/main.scss";
-import Glider from "glider-js";
-import "glider-js/glider.min.css";
-
-// -----------------------------
-// 0. Precarregar imatges automàticament
-// -----------------------------
-import { imagesToPreload } from "./preload-images.js";
-
-imagesToPreload.forEach(async url => {
-    try {
-        const img = new Image();
-        img.src = url;
-        await img.decode();
-    } catch (err) {
-        console.warn(`No s’ha pogut carregar la imatge: ${url}`);
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    initMenu();
 });
 
-// ==============================
-// 1. Funcions DOMContentLoaded
-// ==============================
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
+    initLazyImages();
+    initIntersectionAnimations();
+    initGliderWhenIdle();
+});
 
-    // ---------- Menú responsive ----------
-    const menuToggle = document.querySelector('header .menu-toggle');
-    const navLinks = document.querySelector('header .nav-links');
+/* ==============================
+Menú responsive
+================================ */
+function initMenu() {
+    const menuToggle = document.querySelector("header .menu-toggle");
+    const navLinks = document.querySelector("header .nav-links");
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const expanded = navLinks.classList.contains('active');
-            menuToggle.textContent = expanded ? '✕' : '☰';
-            menuToggle.setAttribute('aria-expanded', expanded);
+    if (!menuToggle || !navLinks) return;
+
+    menuToggle.addEventListener("click", () => {
+        const expanded = navLinks.classList.toggle("active");
+
+        menuToggle.textContent = expanded ? "✕" : "☰";
+        menuToggle.setAttribute("aria-expanded", expanded);
+        menuToggle.setAttribute(
+            "aria-label",
+            expanded ? "Tancar menú" : "Obrir menú"
+        );
+    });
+}
+
+/* ==============================
+Lazy loading d’imatges
+(excloent la imatge LCP)
+================================ */
+function initLazyImages() {
+    document
+        .querySelectorAll("img:not([loading]):not(.featured-image)")
+        .forEach(img => {
+            img.loading = "lazy";
+            img.decoding = "async";
         });
-    }
+}
 
-    // ---------- Glider.js Galeria ----------
+/* ==============================
+IntersectionObserver animacions
+(no observa la imatge LCP)
+================================ */
+function initIntersectionAnimations() {
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    obs.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
+
+    document
+        .querySelectorAll(".gallery-img, .card")
+        .forEach(el => observer.observe(el));
+}
+
+/* ==============================
+Glider.js (carregat quan el navegador està lliure)
+================================ */
+function initGliderWhenIdle() {
     const gallery = document.querySelector(".glider");
-    if (gallery) {
-        const glider = new Glider(gallery, {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            draggable: true,
-            dots: ".dots",
-            arrows: { prev: ".glider-prev", next: ".glider-next" },
-            responsive: [
-                { breakpoint: 0, settings: { slidesToShow: 1 } },
-                { breakpoint: 775, settings: { slidesToShow: 2 } },
-            ],
-        });
+    if (!gallery) return;
 
-        // Accessibilitat fletxes
-        const prev = document.querySelector(".glider-prev");
-        const next = document.querySelector(".glider-next");
-        if (prev) prev.setAttribute("aria-label", "Slide anterior");
-        if (next) next.setAttribute("aria-label", "Següent slide");
+    const loadGlider = async () => {
+        const { default: Glider } = await import("glider-js");
+        await import("glider-js/glider.min.css");
+        initGlider(gallery, Glider);
+    };
 
-        // Lazy-loading imatges
-        glider.track.querySelectorAll("img").forEach(img => {
-            img.setAttribute("loading", "lazy");
-        });
-
-        // Ajusta gap
-        function updateGap() {
-            const containerWidth = gallery.offsetWidth;
-            const slide = glider.track.querySelector('.glider-slide');
-            if (slide) {
-                const slideWidth = slide.offsetWidth;
-                const slidesVisible = Math.floor(containerWidth / slideWidth);
-                gallery.classList.toggle("has-gap", slidesVisible > 1);
-            }
-        }
-
-        updateGap();
-
-        // Resize debounce
-        let resizeTimeout;
-        window.addEventListener("resize", () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                glider.refresh();
-                updateGap();
-            }, 150);
-        });
-
-        // Animacions inicials slides
-        glider.track.querySelectorAll(".glider-slide").forEach((slide, index) => {
-            slide.style.opacity = 0;
-            slide.style.transform = "translateY(20px)";
-            slide.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-            setTimeout(() => {
-                slide.style.opacity = 1;
-                slide.style.transform = "translateY(0)";
-            }, index * 150);
-        });
+    if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadGlider);
+    } else {
+        setTimeout(loadGlider, 300);
     }
+}
 
-    // ==============================
-    // 2. Animació IntersectionObserver
-    // ==============================
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    const elementsToObserve = [
-        document.querySelector('.featured-image'),
-        ...document.querySelectorAll('.gallery-img')
-    ];
-    elementsToObserve.forEach(el => {
-        if (el) observer.observe(el);
+function initGlider(gallery) {
+    const glider = new Glider(gallery, {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        draggable: true,
+        dots: ".dots",
+        arrows: {
+            prev: ".glider-prev",
+            next: ".glider-next"
+        },
+        responsive: [
+            { breakpoint: 0, settings: { slidesToShow: 1 } },
+            { breakpoint: 775, settings: { slidesToShow: 2 } }
+        ]
     });
 
-    // ==============================
-    // 3. Mostrar les card
-    // ==============================
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => observer.observe(card));
+    // Accessibilitat fletxes
+    document.querySelector(".glider-prev")?.setAttribute(
+        "aria-label",
+        "Slide anterior"
+    );
+    document.querySelector(".glider-next")?.setAttribute(
+        "aria-label",
+        "Següent slide"
+    );
 
-});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    // Animació progressiva de slides
+    glider.track?.querySelectorAll(".glider-slide").forEach((slide, index) => {
+        setTimeout(() => {
+            slide.classList.add("slide-in");
+        }, index * 150);
+    });
+
+    // Ajust del gap
+    function updateGap() {
+        const slide = glider.track?.querySelector(".glider-slide");
+        if (!slide) return;
+
+        const slidesVisible = Math.floor(
+            gallery.offsetWidth / slide.offsetWidth
+        );
+
+        gallery.classList.toggle("has-gap", slidesVisible > 1);
+    }
+
+    updateGap();
+
+    // Resize amb debounce
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            glider.refresh(true);
+            updateGap();
+        }, 150);
+    });
+}
