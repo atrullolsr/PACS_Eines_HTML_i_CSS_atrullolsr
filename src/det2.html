@@ -6,6 +6,8 @@
         <title>Detall París - Viatges pel món</title>
         <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
         <link rel="alternate icon" href="./assets/images/favicon.png">
+        <link rel="preload" href="./css/main.scss" as="style">
+        <link rel="stylesheet" href="./css/main.scss">
     </head>
     <body>
         <!-- Skip link WCAG -->
@@ -31,10 +33,12 @@
                 <h1>Viu la màgia de París</h1>
                 <!-- Imatge destacada -->
                 <picture>
-                    <source media="(max-width: 600px)" type="image/webp" srcset="./assets/images/generated/paris/panoramica_paris-480.webp">
-                    <source media="(max-width: 1024px)" type="image/webp" srcset="./assets/images/generated/paris/panoramica_paris-800.webp">
-                    <source media="(min-width: 1025px)" type="image/webp" srcset="./assets/images/generated/paris/panoramica_paris-1200.webp">
-                    <img src="./assets/images/originals/paris/panoramica_paris.jpg" alt="Vista de Roma amb el Colosseu" class="featured-image">
+                    <source type="image/webp" srcset="
+                    ./assets/images/generated/paris/panoramica_paris-480.webp 480w,
+                    ./assets/images/generated/paris/panoramica_paris-800.webp 800w,
+                    ./assets/images/generated/paris/panoramica_paris-1200.webp 1200w" sizes="100vw">
+                    <img src="./assets/images/originals/paris/panoramica_paris.jpg" alt="Vista panoràmica de París"
+                        class="featured-image" fetchpriority="high" width="1200" height="600">
                 </picture>
                 
                 <p>París és una destinació que enamora a qualsevol viatger. La seva elegància, la seva història i el seu ambient únic la
@@ -75,7 +79,7 @@
                                 ./assets/images/generated/paris/torre_eiffel-800.webp 800w,
                                 ./assets/images/generated/paris/torre_eiffel-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/paris/torre_eiffel.jpg" alt="Torre Eiffel">
+                                <img src="./assets/images/originals/paris/torre_eiffel.jpg" alt="Torre Eiffel" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Torre Eiffel</strong>
@@ -88,7 +92,7 @@
                                 ./assets/images/generated/paris/arc-de-triomf-800.webp 800w,
                                 ./assets/images/generated/paris/arc-de-triomf-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/paris/arc-de-triomf.jpg" alt="Arc de Triomf">
+                                <img src="./assets/images/originals/paris/arc-de-triomf.jpg" alt="Arc de Triomf" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Arc de Triomf</strong>
@@ -101,7 +105,7 @@
                                 ./assets/images/generated/paris/louvre-800.webp 800w,
                                 ./assets/images/generated/paris/louvre-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/paris/louvre.jpg" alt="Museu del Louvre">
+                                <img src="./assets/images/originals/paris/louvre.jpg" alt="Museu del Louvre" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Museu del Louvre</strong>
@@ -114,7 +118,7 @@
                                 ./assets/images/generated/paris/notre_dame-800.webp 800w,
                                 ./assets/images/generated/paris/notre_dame-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/paris/notre_dame.jpg" alt="Notre-Dame">
+                                <img src="./assets/images/originals/paris/notre_dame.jpg" alt="Notre-Dame" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Notre-Dame</strong>
@@ -154,6 +158,6 @@
             <p>&copy; 2025 Viatges pel món. <a href="./links.html">Crèdits i enllaços</a></p>
         </footer>
 
-        <script type="module" src="./js/main.js"></script>
+        <script src="./js/main.js" defer></script>
     </body>
 </html>

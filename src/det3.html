@@ -6,6 +6,8 @@
         <title>Detall Lisboa - Viatges pel món</title>
         <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
         <link rel="alternate icon" href="./assets/images/favicon.png">
+        <link rel="preload" href="./css/main.scss" as="style">
+        <link rel="stylesheet" href="./css/main.scss">
     </head>
     <body>
         <!-- Skip link WCAG -->
@@ -31,10 +33,12 @@
                 <h1>Sent l’encant de Lisboa</h1>
                 <!-- Imatge destacada -->
                 <picture>
-                    <source media="(max-width: 600px)" type="image/webp" srcset="./assets/images/generated/lisboa/panoramica_lisboa-480.webp">
-                    <source media="(max-width: 1024px)" type="image/webp" srcset="./assets/images/generated/lisboa/panoramica_lisboa-800.webp">
-                    <source media="(min-width: 1025px)" type="image/webp" srcset="./assets/images/generated/lisboa/panoramica_lisboa-1200.webp">
-                    <img src="./assets/images/originals/lisboa/panoramica_lisboa.jpg" alt="Vista panoramica de Lisboa" class="featured-image">
+                    <source type="image/webp" srcset="
+                    ./assets/images/generated/lisboa/panoramica_lisboa-480.webp 480w,
+                    ./assets/images/generated/lisboa/panoramica_lisboa-800.webp 800w,
+                    ./assets/images/generated/lisboa/panoramica_lisboa-1200.webp 1200w" sizes="100vw">
+                    <img src="./assets/images/originals/lisboa/panoramica_lisboa.jpg" alt="Vista panoramica de Lisboa"
+                        class="featured-image" fetchpriority="high" width="1200" height="600">
                 </picture>
 
                 <p>Lisboa, la capital de Portugal, és una ciutat plena de llum, colors i autenticitat. Construïda sobre set turons,
@@ -77,7 +81,7 @@
                                 ./assets/images/generated/lisboa/belem-800.webp 800w,
                                 ./assets/images/generated/lisboa/belem-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/lisboa/belem.jpg" alt="Torre de Belém">
+                                <img src="./assets/images/originals/lisboa/belem.jpg" alt="Torre de Belém" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Torre de Belém</strong>
@@ -90,7 +94,7 @@
                                 ./assets/images/generated/lisboa/jeronimos-800.webp 800w,
                                 ./assets/images/generated/lisboa/jeronimos-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/lisboa/jeronimos.jpg" alt="Monestir dels Jerònims">
+                                <img src="./assets/images/originals/lisboa/jeronimos.jpg" alt="Monestir dels Jerònims" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Monestir dels Jerònims</strong>
@@ -103,7 +107,7 @@
                                 ./assets/images/generated/lisboa/tramvia_28-800.webp 800w,
                                 ./assets/images/generated/lisboa/tramvia_28-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/lisboa/tramvia_28.jpg" alt="Tramvia 28">
+                                <img src="./assets/images/originals/lisboa/tramvia_28.jpg" alt="Tramvia 28" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Tramvia 28</strong>
@@ -116,7 +120,7 @@
                                 ./assets/images/generated/lisboa/elevador_santa_justa-800.webp 800w,
                                 ./assets/images/generated/lisboa/elevador_santa_justa-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/lisboa/elevador_santa_justa.jpg" alt="Elevador de Santa Justa">
+                                <img src="./assets/images/originals/lisboa/elevador_santa_justa.jpg" alt="Elevador de Santa Justa" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Elevador de Santa Justa</strong>
@@ -156,6 +160,6 @@
             <p>&copy; 2025 Viatges pel món. <a href="./links.html">Crèdits i enllaços</a></p>
         </footer>
 
-        <script type="module" src="./js/main.js"></script>
+        <script src="./js/main.js" defer></script>
     </body>
 </html>

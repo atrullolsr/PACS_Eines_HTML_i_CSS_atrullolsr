@@ -6,6 +6,8 @@
         <title>Detall Roma - Viatges pel món</title>
         <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
         <link rel="alternate icon" href="./assets/images/favicon.png">
+        <link rel="preload" href="./css/main.scss" as="style">
+        <link rel="stylesheet" href="./css/main.scss">
     </head>
     <body>
         <!-- Skip link WCAG -->
@@ -31,10 +33,12 @@
                 <h1>Endinsa’t a Roma, la Ciutat Eterna</h1>
                 <!-- Imatge destacada -->
                 <picture>
-                    <source media="(max-width: 600px)" type="image/webp" srcset="./assets/images/generated/roma/panoramica_roma-480.webp">
-                    <source media="(max-width: 1024px)" type="image/webp" srcset="./assets/images/generated/roma/panoramica_roma-800.webp">
-                    <source media="(min-width: 1025px)" type="image/webp" srcset="./assets/images/generated/roma/panoramica_roma-1200.webp">
-                    <img src="./assets/images/originals/roma/panoramica_roma.jpg" alt="Vista de Roma amb el Colosseu" class="featured-image">
+                    <source type="image/webp" srcset="
+                    ./assets/images/generated/roma/panoramica_roma-480.webp 480w,
+                    ./assets/images/generated/roma/panoramica_roma-800.webp 800w,
+                    ./assets/images/generated/roma/panoramica_roma-1200.webp 1200w" sizes="100vw"> 
+                    <img src="./assets/images/originals/roma/panoramica_roma.jpg" alt="Vista de Roma amb el Colosseu" 
+                        class="featured-image" fetchpriority="high" width="1200" height="600">
                 </picture>
 
                 <p>Roma és una ciutat que respira història a cada racó. Caminar pels seus carrers és com fer un viatge en el temps, des
@@ -75,7 +79,7 @@
                                 ./assets/images/generated/roma/coloseu-800.webp 800w,
                                 ./assets/images/generated/roma/coloseu-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/roma/coloseu.jpg" alt="Colosseu, Roma">
+                                <img src="./assets/images/originals/roma/coloseu.jpg" alt="Colosseu" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Colosseu</strong>
@@ -88,7 +92,7 @@
                                 ./assets/images/generated/roma/panteo_roma-800.webp 800w,
                                 ./assets/images/generated/roma/panteo_roma-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/roma/panteo_roma.jpg" alt="Panteó, Roma">
+                                <img src="./assets/images/originals/roma/panteo_roma.jpg" alt="Panteó" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Panteó</strong>
@@ -101,7 +105,7 @@
                                 ./assets/images/generated/roma/fontana_di_trevi-800.webp 800w,
                                 ./assets/images/generated/roma/fontana_di_trevi-1200.webp 1200w"
                                 sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw" type="image/webp">
-                                <img src="./assets/images/originals/roma/fontana_di_trevi.jpg" alt="Fontana de Trevi, Roma">
+                                <img src="./assets/images/originals/roma/fontana_di_trevi.jpg" alt="Fontana de Trevi" loading="lazy">
                             </picture>
                             <figcaption class="info">
                                 <strong class="caption">Fontana de Trevi</strong>
@@ -141,6 +145,6 @@
             <p>&copy; 2025 Viatges pel món. <a href="./links.html">Crèdits i enllaços</a></p>
         </footer>
 
-        <script type="module" src="./js/main.js"></script>
+        <script src="./js/main.js" defer></script>
     </body>
 </html>

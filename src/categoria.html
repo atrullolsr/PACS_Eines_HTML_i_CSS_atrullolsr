@@ -6,6 +6,8 @@
         <title>Categoria - Viatges pel món</title>
         <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
         <link rel="alternate icon" href="./assets/images/favicon.png">
+        <link rel="preload" href="./css/main.scss" as="style">
+        <link rel="stylesheet" href="./css/main.scss">
     </head>
     <body>
         <!-- Skip link WCAG -->
@@ -42,7 +44,7 @@
                         ./assets/images/generated/roma/roma-bandera-1200.webp 1200w"
                         sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         type="image/webp">
-                        <img src="./assets/images/originals/roma/roma-bandera.jpg" alt="Vista de Roma amb la bandera italiana" class="card-image">
+                        <img src="./assets/images/originals/roma/roma-bandera.jpg" alt="Vista de Roma amb la bandera italiana" class="card-image" loading="lazy">
                     </picture>
                     <div class="card-content">
                         <h2>Endinsa’t a Roma, la Ciutat Eterna</h2>
@@ -65,7 +67,7 @@
                         ./assets/images/generated/paris/paris-bandera-1200.webp 1200w"
                         sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         type="image/webp">
-                        <img src="./assets/images/originals/paris/paris-bandera.jpg" alt="Vista de París amb la bandera francesa"  class="card-image">
+                        <img src="./assets/images/originals/paris/paris-bandera.jpg" alt="Vista de París amb la bandera francesa"  class="card-image" loading="lazy">
                     </picture>
                     <div class="card-content">
                         <h2>Viu la màgia de París</h2>
@@ -88,7 +90,7 @@
                         ./assets/images/generated/lisboa/lisboa-bandera-1200.webp 1200w"
                         sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         type="image/webp">
-                        <img src="./assets/images/originals/lisboa/lisboa-bandera.jpg" alt="Vista de Lisboa amb la bandera portuguesa" class="card-image">
+                        <img src="./assets/images/originals/lisboa/lisboa-bandera.jpg" alt="Vista de Lisboa amb la bandera portuguesa" class="card-image" loading="lazy">
                     </picture>
                     <div class="card-content">
                         <h2>Sent l’encant de Lisboa</h2>
@@ -111,7 +113,7 @@
                         ./assets/images/generated/londres/londres-bandera-1200.webp 1200w"
                         sizes="(max-width: 775px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         type="image/webp">
-                        <img src="./assets/images/originals/londres/londres-bandera.jpg" alt="Vista de Londres amb la bandera britànica" class="card-image">
+                        <img src="./assets/images/originals/londres/londres-bandera.jpg" alt="Vista de Londres amb la bandera britànica" class="card-image" >
                     </picture>                
                     <div class="card-content">
                         <h2>Explora Londres, la capital que mai dorm</h2>
@@ -128,6 +130,6 @@
             <p>&copy; 2025 Viatges pel món. <a href="./links.html">Crèdits i enllaços</a></p>
         </footer>
 
-        <script type="module" src="./js/main.js"></script>
+        <script src="./js/main.js" defer></script>
     </body>
 </html>
