@@ -1,21 +1,16 @@
-<article class="flex flex-col items-center text-center flex-1 basis-[250px] max-w-[400px] bg-brand-dark text-white rounded-xl overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/40">
+<article class="card-ponent flex-1 basis-[250px] max-w-[400px] overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/40">
 
   <div class="w-full h-[260px] overflow-hidden">
     <img src="{{ foto }}" alt="{{ nom }}" class="w-full h-full object-cover object-top block">
   </div>
 
-  <div class="w-full p-6 bg-brand-dark">
+  <div class="w-full">
     <div class="text-white font-serif font-bold text-xl mb-1">{{ nom }}</div>
-
     <p class="text-brand-secondary font-semibold text-xs uppercase tracking-wider mb-4">
       "{{ descripcio }}"
     </p>
-
     <include src="components/btn-brand.html">
-      {
-        "text": "Saber-ne més",
-        "modalId": "{{ modalId }}"
-      }
+      { "text": "Saber-ne més", "modalId": "{{ modalId }}" }
     </include>
   </div>
 

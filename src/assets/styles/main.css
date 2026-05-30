@@ -4,18 +4,17 @@
  */
 
 /**
-  * 1. Import Tailwind Core
+ * 1. Les importacions de fitxers personalitzats SEMPRE a dalt de tot
+ */
+@import './components';
+
+/**
+  * 2. Les directives del nucli de Tailwind a sota
   */
-  @tailwind base;
-  @tailwind components;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  /**
-    * 2. Importació de les nostres classes personalitzades (@apply)
-    */
-  @use './components';
-
-  @tailwind utilities;
-
-  /**
-   * Do NOT include anything else in this file!
-   */
+/**
+  * Do NOT include anything else in this file!
+  */

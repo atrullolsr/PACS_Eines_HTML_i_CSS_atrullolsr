@@ -1,0 +1,14 @@
+/* 1. El botó principal de la Home i de les targetes (intel·ligent) */
+.btn-aura {
+  @apply inline-block bg-brand-primary text-brand-light hover:bg-brand-secondary hover:text-brand-dark text-xs font-bold uppercase tracking-wider py-3 px-6 rounded-full transition-all duration-200 text-center shadow-sm hover:shadow-md cursor-pointer;
+}
+
+/* 2. L'estructura de les targetes de la pàgina de Ponents */
+.card-ponent {
+  @apply bg-brand-dark p-6 rounded-xl shadow-sm border border-stone-200/60 flex flex-col items-center text-center;
+}
+
+/* 3. El disseny de la caixa de text o contenidor del Modal */
+.modal-aura-content {
+  @apply bg-stone-900 text-stone-100 rounded-2xl border border-stone-800 shadow-2xl;
+}

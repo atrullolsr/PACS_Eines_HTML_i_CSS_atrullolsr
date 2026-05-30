@@ -1,5 +1,6 @@
-<dialog id="{{ modalId }}" class="m-auto rounded-2xl border-0 shadow-2xl bg-stone-900 text-stone-100 w-[calc(100%-2rem)] max-w-3xl p-0 backdrop:bg-stone-950/80">
-  <div class="modal-aura-content p-6 pb-0 flex justify-between items-center bg-stone-900">
+<dialog id="{{ modalId }}" class="modal-aura-content m-auto border-0 w-[calc(100%-2rem)] max-w-3xl p-0 backdrop:bg-stone-950/80">
+
+  <div class="p-6 pb-0 flex justify-between items-center bg-stone-900">
     <h5 class="text-3xl font-bold text-amber-400">{{ nom }}</h5>
     <button type="button" class="text-stone-400 hover:text-white text-3xl font-light" onclick="document.getElementById('{{ modalId }}').close()">×</button>
   </div>
