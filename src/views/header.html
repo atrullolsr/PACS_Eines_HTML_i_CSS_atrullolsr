@@ -1,0 +1,21 @@
+<header class="w-full bg-brand-dark text-brand-light shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-6 py-4 flex flex-wrap justify-between items-center">
+
+    <a class="text-xl font-bold tracking-wider" href="./index.html">
+      <span class="text-brand-primary">Aura</span>Negra
+    </a>
+
+    <button title="Obrir menú de navegació" id="menu-btn" type="button" class="flex md:hidden flex-col justify-between w-6 h-4 text-brand-light focus:outline-none" aria-label="Obrir menú">
+      <span class="w-full h-0.5 bg-current transition-all duration-300"></span>
+      <span class="w-full h-0.5 bg-current transition-all duration-300"></span>
+      <span class="w-full h-0.5 bg-current transition-all duration-300"></span>
+    </button>
+
+    <div id="menu-links" class="hidden flex-col w-full md:w-auto md:flex md:flex-row gap-4 md:gap-6 mt-4 md:mt-0 border-t border-brand-primary/20 md:border-t-0 pt-4 md:pt-0">
+      <a class="transition-colors py-2 md:py-0 {{ pagina === 'inici' ? 'text-brand-secondary font-semibold' : 'hover:text-brand-secondary' }}" href="./index.html">Inici</a>
+      <a class="transition-colors py-2 md:py-0 {{ pagina === 'ponents' ? 'text-brand-secondary font-semibold' : 'hover:text-brand-secondary' }}" href="./ponents.html">Ponents</a>
+      <a class="transition-colors py-2 md:py-0 {{ pagina === 'ia' ? 'text-brand-secondary font-semibold' : 'hover:text-brand-secondary' }}" href="./ia.html">Página IA</a>
+    </div>
+
+  </nav>
+</header>

@@ -1,0 +1,21 @@
+/**
+ * Use this file to import partials.
+ * Do not include SCSS code in this file.
+ */
+
+/**
+  * 1. Import Tailwind Core
+  */
+  @tailwind base;
+  @tailwind components;
+
+  /**
+    * 2. Importació de les nostres classes personalitzades (@apply)
+    */
+  @use './components';
+
+  @tailwind utilities;
+
+  /**
+   * Do NOT include anything else in this file!
+   */

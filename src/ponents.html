@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./assets/styles/main.css" />
+    <title>Ponents | Aura Negra – Jornades d'Artesania i Foc</title>
+  </head>
+
+  <body class="bg-brand-light text-brand-dark antialiased font-sans min-h-screen flex flex-col justify-between">
+
+    <include src="views/header.html">{ "pagina": "ponents" }</include>
+
+    <main class="bg-brand-light py-12 px-6">
+      <div class="max-w-6xl mx-auto">
+
+        <include src="components/section-title.html">
+          {
+            "text": "Ponents Confirmats"
+          }
+        </include>
+
+        <div class="flex flex-wrap gap-10 justify-center">
+
+          <include src="./components/card-ponent.html">
+            {
+              "foto": "./assets/images/enric-orobitg.jpg",
+              "nom": "Enric Orobitg",
+              "descripcio": "Especialista en torn i cocció tradicional d'argila negra.",
+              "modalId": "modalEnric"
+            }
+          </include>
+
+          <include src="./components/card-ponent.html">
+            {
+              "foto": "./assets/images/toni-cumella.jpg",
+              "nom": "Toni Cumella",
+              "descripcio": "Exploració de la ceràmica arquitectònica i el foc.",
+              "modalId": "modalToni"
+            }
+          </include>
+
+          <include src="./components/card-ponent.html">
+            {
+              "foto": "./assets/images/carme-balada.jpg",
+              "nom": "Carme Balada",
+              "descripcio": "Minimalisme a través de la ceràmica i puresa formal.",
+              "modalId": "modalCarme"
+            }
+          </include>
+
+          <include src="components/card-ponent.html">
+            {
+              "nom": "Ponent per Confirmar",
+              "foto": "./assets/images/sillo-detall.jpg",
+              "descripcio": "Properament revelarem el proper mestre artesà d'aquesta edició.",
+              "modalId": "pendent"
+            }
+          </include>
+
+        </div>
+      </div> </main>
+
+    <include src="./components/modal-ponent.html">
+      {
+        "modalId": "modalEnric",
+        "nom": "Enric Orobitg",
+        "sobre": "Mestre artesà amb més de 40 anys d'ofici a Verdú. És l'hereu d'una tradició familiar que ha convertit el fang negre en un segell d'identitat catalana.",
+        "xerrada": "S'analitzarà com el disseny contemporani ha rescatat peces tradicionals per portar-les a les galeries d'art modernes.",
+        "durada": "45 minuts",
+        "etiquetaTecnica": "Tècnica",
+        "detallTecnic": "Terrissa Negra"
+      }
+    </include>
+
+    <include src="./components/modal-ponent.html">
+      {
+        "modalId": "modalToni",
+        "nom": "Antoni Cumella",
+        "sobre": "Dirigeix el taller de ceràmica weaves prestigiós del país aplicat a l'arquitectura. Premi Nacional de Disseny i col·laborador de grans arquitectes.",
+        "xerrada": "La integració de la ceràmica en les façanes modernes i com l'artesania escala a nivell industrial sense perdre l'ànima.",
+        "durada": "50 minuts",
+        "etiquetaTecnica": "Àmbit",
+        "detallTecnic": "Arquitectura"
+      }
+    </include>
+
+    <include src="./components/modal-ponent.html">
+      {
+        "modalId": "modalCarme",
+        "nom": "Carme Balada",
+        "sobre": "Artista visual que explora el minimalisme a través de la ceràmica. El seu treball ha estat exposat internacionalment, destacant la seva puresa formal.",
+        "xerrada": "Com el buit i l'ombra juguen un paper fonamental en la creació de peces de ceràmica que busquen la pau visual.",
+        "durada": "60 minuts",
+        "etiquetaTecnica": "Estil",
+        "detallTecnic": "Contemporani"
+      }
+    </include>
+
+    <include src="components/modal-ponent.html">
+      {
+        "modalId": "pendent",
+        "nom": "Properament",
+        "sobre": "Estem acabant de tancar el calendari d'activitats i tallers de foc per oferir-te la millor experiència de terrissa negra a Verdú. Estigues atent a les nostres xarxes socials!"
+      }
+    </include>
+
+    <include src="views/footer.html"></include>
+  </body>
+</html>

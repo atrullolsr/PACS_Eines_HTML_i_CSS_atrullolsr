@@ -1,36 +1,104 @@
 <!doctype html>
-
-<html>
+<html lang="ca">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss" />
-    <!-- do not remove this line! -->
-    <title>UOC Boilerplate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./assets/styles/main.css" />
+    <title>Inici | Aura Negra – Jornades d'Artesania i Foc</title>
   </head>
-  <body>
-    <div class="uoc-container">
-      <picture>
-        <source
-          srcset="./assets/images/logo.png?as=webp&width=350"
-          type="image/webp"
-        />
-        <img
-          src="./assets/images/logo.png?width=350"
-          alt="Universitat Oberta de Catalunya"
-          class="uoc-logo"
-        />
-      </picture>
-      <h1 class="uoc-title">Hello, UOC!</h1>
-      <p>
-        This is a starter template for the Advanced HTML and CSS Tools courses
-        from the Master's Program in Multimedia Applications and the Master's
-        Program in Web App and Website Development at the Universitat Oberta de
-        Catalunya.
-      </p>
-    </div>
+
+  <body class="bg-brand-light text-brand-dark antialiased font-sans min-h-screen lg:h-screen lg:overflow-hidden flex flex-col justify-between">
+    <include src="views/header.html">{ "pagina": "inici" }</include>
+
+    <main class="w-full bg-stone-100 text-stone-900 h-[calc(100vh-140px)] md:h-[calc(100vh-160px)] min-h-[450px]">
+
+      <section class="w-full h-full flex flex-row overflow-hidden gap-0">
+
+        <div class="w-1/2 h-full flex flex-col justify-center p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24 flex-shrink-0 bg-stone-100 overflow-y-auto">
+          <div class="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto flex flex-col gap-4 md:gap-6 lg:gap-8 justify-center">
+
+            <header class="text-left w-full">
+              <div class="font-serif font-bold uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight tracking-tight text-stone-900 flex flex-col xl:flex-row xl:gap-3">
+                <span class="text-brand-primary whitespace-nowrap">Aura</span>
+                <span class="whitespace-nowrap">Negra</span>
+              </div>
+              <p class="font-sans font-semibold text-stone-400 tracking-widest text-[9px] sm:text-[10px] md:text-xs uppercase mt-1">
+                L'ART DEL FANG I EL FOC
+              </p>
+            </header>
+
+            <div class="text-left border-l-4 border-amber-700 pl-3 md:pl-4 lg:pl-6">
+              <p class="font-bold text-brand-dark text-base sm:text-xl md:text-2xl lg:text-3xl uppercase tracking-wide leading-none">
+                06 — 07 JUNY
+              </p>
+              <p class="text-[9px] sm:text-[11px] md:text-sm text-stone-500 tracking-widest font-semibold uppercase mt-1 md:mt-2">
+                VERDÚ, L'URGELL
+              </p>
+            </div>
+
+            <div class="justify-start flex flex-col sm:flex-row flex-wrap gap-2 md:gap-4 w-full pt-2">
+              <div class="w-full sm:w-auto text-xs md:text-sm">
+                <include src="./components/btn-brand.html">
+                  {
+                    "text": "Ponents",
+                    "enllaç": "./ponents.html"
+                  }
+                </include>
+              </div>
+              <div class="w-full sm:w-auto text-xs md:text-sm">
+                <include src="./components/btn-brand.html">
+                  {
+                    "text": "Pagina IA",
+                    "enllaç": "./ia.html"
+                  }
+                </include>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="relative w-1/2 h-full overflow-hidden flex-shrink-0 group">
+
+          <div id="carousel-inner" class="flex w-full h-full transition-transform duration-500 ease-out">
+
+            <div class="w-full h-full flex-shrink-0">
+              <img src="assets/images/pottery-hands.jpg" class="w-full h-full object-cover object-center" alt="Artesa treballant el fang de l'Aura Negra">
+            </div>
+
+            <div class="w-full h-full flex-shrink-0">
+              <img src="assets/images/brick-oven-fire.jpg" class="w-full h-full object-cover object-center" alt="Foc intens dins del forn de maons a Verdú">
+            </div>
+
+            <div class="w-full h-full flex-shrink-0">
+              <img src="assets/images/taller-sambola.jpg" class="w-full h-full object-cover object-center" alt="Espai de creació i pieces al taller Sambola">
+            </div>
+
+          </div>
+
+          <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-2 md:p-3 rounded-full hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" aria-label="Imatge anterior" title="Imatge anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+
+          <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white p-2 md:p-3 rounded-full hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" aria-label="Imatge següent" title="Imatge següent">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 md:gap-2 z-20">
+            <button class="carousel-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full bg-white transition-all duration-300 aria-pressed:w-4 md:aria-pressed:w-8 aria-pressed:bg-amber-700" aria-pressed="true" data-slide="0" aria-label="Mostra la imatge 1" title="Mostra la imatge 1"></button>
+            <button class="carousel-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full bg-white/50 transition-all duration-300 aria-pressed:w-4 md:aria-pressed:w-8 aria-pressed:bg-amber-700" aria-pressed="false" data-slide="1" aria-label="Mostra la imatge 2" title="Mostra la imatge 2"></button>
+            <button class="carousel-dot w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full bg-white/50 transition-all duration-300 aria-selected:w-4 md:aria-pressed:w-8 aria-pressed:bg-amber-700" aria-pressed="false" data-slide="2" aria-label="Mostra la imatge 3" title="Mostra la imatge 3"></button>
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+
     <include src="./views/footer.html"></include>
-    <script type="module" src="./assets/scripts/main.js"></script>
-    <!-- do not remove this line! -->
   </body>
 </html>

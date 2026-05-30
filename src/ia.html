@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./assets/styles/main.css" />
+    <title>Les Creacions | Aura Negra – Jornades d'Artesania i Foc</title>
+  </head>
+  <body class="bg-stone-100 text-stone-900 font-sans min-h-screen flex flex-col">
+
+    <include src="views/header.html">{ "pagina": "ia" }</include>
+
+    <main class="flex-grow py-12 px-6">
+      <div class="max-w-5xl mx-auto">
+
+        <div class="text-center mb-12">
+          <h1 class="font-serif font-bold text-3xl md:text-5xl text-brand-dark uppercase tracking-tight">
+            Aura Negra edició 2026
+          </h1>
+          <p class="font-sans font-semibold text-stone-400 tracking-widest text-xs uppercase mt-2">
+            Aquesta secció descriu les creacions dels millors artesans d'enguany
+          </p>
+          <div class="w-24 h-1 bg-amber-700 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <section class="bg-brand-dark text-white p-8 rounded-xl shadow-md mb-8">
+          <h3 class="font-serif font-bold text-xl text-brand-secondary mb-4">
+            L'art de transformar la terra a través del foc
+          </h3>
+          <p class="text-sm leading-relaxed mb-4 text-brand-light/90">
+            De la mateixa manera que els mestres artesans de Verdú utilitzen el foc i el fum per transformar l'argila en peces úniques de terrissa negra, en aquesta edició posem el focus en les tècniques de reducció extrema. Cada peça exposada representa setmanes de treball al torn i hores crítiques de cocció controlada als forns tradicionals de llenya.
+          </p>
+          <p class="text-sm leading-relaxed text-brand-light/90">
+            A continuació, presentem una selecció de les peces i els tallers experimentals més destacats d'enguany, una mostra del llegat viu de la terrissa catalana que manté intacta la seva essència primitiva però dialoga de forma directa amb el disseny contemporani.
+          </p>
+        </section>
+
+        <div class="mb-8">
+          <h2 class="text-xl font-bold font-serif text-brand-dark border-b border-stone-300 pb-2">Les creacions</h2>
+          <p class="text-sm text-stone-500 mt-1">Aquestes són les obres mestre seleccionades per a la mostra d'enguany</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+          <div class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">Enric Orobitg</span>
+              <h3 class="font-serif font-bold text-xl text-brand-dark mb-2">Càntir de reducció xilena</h3>
+              <p class="text-sm text-stone-600 leading-relaxed">
+                Aquest càntir tradicional de terrissa negra s'assoleix mitjançant una reducció intensa de fum i llenya tapada dins de la cambra del forn.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">Carme Balada</span>
+              <h3 class="font-serif font-bold text-xl text-brand-dark mb-2">Vas d'argila fumada</h3>
+              <p class="text-sm text-stone-600 leading-relaxed">
+                L'argila arriba al seu màxim potencial de carbonització quan la peça queda atrapada i exposada directament al sutze lliure de les fustes resinoses.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="p-6">
+              <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">Toni Cumella</span>
+              <h3 class="font-serif font-bold text-xl text-brand-dark mb-2">Terracota arquitectònica</h3>
+              <p class="text-sm text-stone-600 leading-relaxed">
+                Ceràmica experimental de gran format, cuita lentament amb foc atmosfèric extrem i l'acció directa de la cendra de fusta d'alzina.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <section class="bg-white border border-brand-primary/20 p-6 rounded-xl shadow-sm overflow-hidden">
+          <div class="mb-4">
+            <h3 class="font-serif font-bold text-xl text-brand-dark">Registre d'Activitats i Edicions</h3>
+            <p class="text-xs text-gray-500 mt-1">Taula estructurada de control, creuant els tallers de foc, els artesans i l'any de l'edició.</p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b-2 border-brand-primary/20 bg-brand-light text-brand-dark">
+                  <th class="p-3 font-bold uppercase tracking-wider text-xs">Tallers de Foc i Fum</th>
+                  <th class="p-3 font-bold uppercase tracking-wider text-xs">Mestres Artesans</th>
+                  <th class="p-3 font-bold uppercase tracking-wider text-xs">Edició Jornades</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-brand-light text-stone-600">
+                <tr class="hover:bg-brand-light/30 transition-colors">
+                  <td class="p-3 font-semibold text-brand-dark">Cocció en Forn de Llenya Tradicional</td>
+                  <td class="p-3 text-gray-700">Enric Orobitg, Carme Balada i Toni Cumella</td>
+                  <td class="p-3 text-brand-primary font-bold">2026 (Actual)</td>
+                </tr>
+                <tr class="hover:bg-brand-light/30 transition-colors">
+                  <td class="p-3 font-semibold text-brand-dark">Ansa de Fang i Modelat Primitiu</td>
+                  <td class="p-3 text-gray-700">Joan Santesmases i Font, Maria Tasias (Ceràmica del Cister)</td>
+                  <td class="p-3 text-gray-500">2025</td>
+                </tr>
+                <tr class="hover:bg-brand-light/30 transition-colors">
+                  <td class="p-3 font-semibold text-brand-dark">Bruixeria del Fum i Puresa de l'Argila</td>
+                  <td class="p-3 text-gray-700">Mercè Riera de Verdú, Lluís Heras (Mestre d'Obra Negra)</td>
+                  <td class="p-3 text-gray-500">2024</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <include src="views/footer.html"></include>
+
+  </body>
+</html>

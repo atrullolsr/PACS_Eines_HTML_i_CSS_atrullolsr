@@ -1,0 +1,35 @@
+<dialog id="{{ modalId }}" class="m-auto rounded-2xl border-0 shadow-2xl bg-stone-900 text-stone-100 w-[calc(100%-2rem)] max-w-3xl p-0 backdrop:bg-stone-950/80">
+  <div class="modal-aura-content p-6 pb-0 flex justify-between items-center bg-stone-900">
+    <h5 class="text-3xl font-bold text-amber-400">{{ nom }}</h5>
+    <button type="button" class="text-stone-400 hover:text-white text-3xl font-light" onclick="document.getElementById('{{ modalId }}').close()">×</button>
+  </div>
+
+  <div class="p-6">
+    <if condition="modalId === 'pendent'">
+      <div class="text-center py-8">
+        <h6 class="text-xs uppercase font-bold text-stone-400 tracking-wider mb-2">Estat de la sessió</h6>
+        <p class="text-stone-300 text-base leading-relaxed">{{ sobre }}</p>
+      </div>
+    </if>
+
+    <else>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div class="md:col-span-7">
+          <h6 class="text-xs uppercase font-bold text-stone-400 tracking-wider mb-2">Sobre el ponent</h6>
+          <p class="text-stone-300 text-sm leading-relaxed mb-4">{{ sobre }}</p>
+          <h6 class="text-xs uppercase font-bold text-stone-400 tracking-wider mb-2 mt-4">La xerrada</h6>
+          <p class="text-stone-200 text-sm leading-relaxed">{{ xerrada }}</p>
+        </div>
+        <div class="md:col-span-5">
+          <div class="p-4 rounded-xl bg-stone-950/50 border border-stone-800">
+            <h6 class="text-amber-400 font-bold mb-3 text-xs uppercase tracking-wider">Fitxa de la sessió</h6>
+            <ul class="space-y-2 text-xs text-stone-300">
+              <li><strong>🕒 Durada:</strong> {{ durada }}</li>
+              <li><strong>🔥 {{ etiquetaTecnica }}:</strong> {{ detallTecnic }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </else>
+  </div>
+</dialog>
