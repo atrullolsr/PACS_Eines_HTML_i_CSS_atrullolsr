@@ -1,35 +1,67 @@
-<dialog id="{{ modalId }}" class="modal-aura-content m-auto border-0 w-[calc(100%-2rem)] max-w-3xl p-0 backdrop:bg-stone-950/80">
+<dialog id="{{ modalId }}" class="m-auto border border-stone-200 w-[calc(100%-2rem)] max-w-3xl p-0 backdrop:bg-stone-950/80 rounded-2xl overflow-hidden shadow-2xl bg-brand-light text-brand-dark">
 
-  <div class="p-6 pb-0 flex justify-between items-center bg-stone-900">
-    <h5 class="text-3xl font-bold text-amber-400">{{ nom }}</h5>
-    <button type="button" class="text-stone-400 hover:text-white text-3xl font-light" onclick="document.getElementById('{{ modalId }}').close()">×</button>
+  <div class="p-6 flex justify-between items-start bg-brand-dark border-b border-stone-800">
+    <div class="space-y-1">
+      <span class="text-[10px] uppercase font-bold text-brand-secondary tracking-widest block">Mestre Artesà</span>
+      <h5 class="text-2xl md:text-3xl font-serif font-bold text-brand-light tracking-tight">{{ nom }}</h5>
+    </div>
+    <button type="button"
+            class="text-stone-400 hover:text-brand-light hover:bg-stone-900 w-8 h-8 rounded-full flex items-center justify-center text-2xl font-light transition-colors duration-200 focus:outline-none"
+            onclick="document.getElementById('{{ modalId }}').close()">
+      &times;
+    </button>
   </div>
 
-  <div class="p-6">
+  <div class="p-6 md:p-8 bg-brand-light">
     <if condition="modalId === 'pendent'">
-      <div class="text-center py-8">
-        <h6 class="text-xs uppercase font-bold text-stone-400 tracking-wider mb-2">Estat de la sessió</h6>
-        <p class="text-stone-300 text-base leading-relaxed">{{ sobre }}</p>
+      <div class="text-center py-10 max-w-md mx-auto">
+        <div class="w-12 h-12 rounded-full bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center mx-auto mb-4 text-brand-primary text-xl">
+          ⏳
+        </div>
+        <h6 class="text-xs uppercase font-bold text-brand-primary tracking-wider mb-2">Estat de la sessió</h6>
+        <p class="text-stone-700 text-sm md:text-base leading-relaxed font-medium">{{ sobre }}</p>
       </div>
     </if>
 
     <else>
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div class="md:col-span-7">
-          <h6 class="text-xs uppercase font-bold text-stone-400 tracking-wider mb-2">Sobre el ponent</h6>
-          <p class="text-stone-300 text-sm leading-relaxed mb-4">{{ sobre }}</p>
-          <h6 class="text-xs uppercase font-bold text-stone-400 tracking-wider mb-2 mt-4">La xerrada</h6>
-          <p class="text-stone-200 text-sm leading-relaxed">{{ xerrada }}</p>
-        </div>
-        <div class="md:col-span-5">
-          <div class="p-4 rounded-xl bg-stone-950/50 border border-stone-800">
-            <h6 class="text-amber-400 font-bold mb-3 text-xs uppercase tracking-wider">Fitxa de la sessió</h6>
-            <ul class="space-y-2 text-xs text-stone-300">
-              <li><strong>🕒 Durada:</strong> {{ durada }}</li>
-              <li><strong>🔥 {{ etiquetaTecnica }}:</strong> {{ detallTecnic }}</li>
-            </ul>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+
+        <div class="md:col-span-7 space-y-5 text-left">
+          <div>
+            <h6 class="text-xs uppercase font-bold text-brand-primary tracking-wider mb-1.5">Sobre el ponent</h6>
+            <p class="text-stone-600 text-sm leading-relaxed font-sans">{{ sobre }}</p>
+          </div>
+
+          <div class="pt-4 border-t border-stone-200">
+            <h6 class="text-xs uppercase font-bold text-brand-primary tracking-wider mb-1.5">La xerrada / Taller</h6>
+            <p class="text-stone-700 text-sm leading-relaxed bg-stone-100 p-3 rounded-lg border border-stone-200/60 font-sans">{{ xerrada }}</p>
           </div>
         </div>
+
+        <div class="md:col-span-5">
+          <div class="p-5 rounded-xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between h-full">
+            <div>
+              <h6 class="text-brand-primary font-bold mb-4 text-xs uppercase tracking-widest border-b border-stone-100 pb-2">
+                Fitxa de la sessió
+              </h6>
+              <ul class="space-y-3 text-sm text-stone-600 font-sans">
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-primary/70 text-xs">⌛</span>
+                  <span><strong class="text-brand-dark font-semibold">Durada:</strong> {{ durada }}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-brand-primary/70 text-xs mt-0.5">🏺</span>
+                  <span><strong class="text-brand-dark font-semibold">{{ etiquetaTecnica }}:</strong> {{ detallTecnic }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-stone-400 text-right mt-6 uppercase tracking-wider font-sans">
+              Aura Negra • 2026
+            </div>
+          </div>
+        </div>
+
       </div>
     </else>
   </div>

@@ -5,7 +5,7 @@
 
 /* 2. L'estructura de les targetes de la pàgina de Ponents */
 .card-ponent {
-  @apply bg-brand-dark rounded-xl shadow-md border border-stone-800 flex flex-col items-center text-center overflow-hidden p-6 gap-4;
+  @apply bg-brand-dark rounded-xl shadow-md border border-stone-800 flex flex-col items-stretch text-center overflow-hidden p-0 gap-0;
 }
 
 /* 3. El disseny de la caixa de text o contenidor del Modal */
